@@ -57,6 +57,7 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title'); //Gets data from title field
         $post->body = $request->input('body'); //Gets data from body field
+        $post->user_id = auth()->user()->id;
         $post->save();
         
         // Redirect
