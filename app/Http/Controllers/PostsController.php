@@ -24,7 +24,7 @@ class PostsController extends Controller
         // $posts = Post::where('title', 'Post Two')->get(); // anoher way of fetching data via WHERE clause
         // $posts = DB::select('select * from posts'); // Using MySql Query
         // $posts = Post::orderBy('title', 'desc')->take(1)->get(); // Fetch data with limit
-        $posts = Post::orderBy('title', 'desc')->paginate(10); // Fetch data and create pagination
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10); // Fetch data and create pagination
 
         return view('posts.index')->with('posts', $posts);
     }
@@ -36,7 +36,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -47,7 +47,20 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $this->validate($request, [
+            'title'=>'required',
+            'body'=>'required'
+        ]);
+
+        // Create Post
+        $post = new Post;
+        $post->title = $request->input('title'); //Gets data from title field
+        $post->body = $request->input('body'); //Gets data from body field
+        $post->save();
+        
+        // Redirect
+        return redirect(url('/posts'))->with('success', 'Post Created');
     }
 
     /**

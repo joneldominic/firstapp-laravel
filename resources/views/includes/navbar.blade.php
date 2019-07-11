@@ -19,7 +19,13 @@
                 <a class="nav-link" href="{{url('/posts')}}">Blog</a>
             </li>
         </ul>
-          
+        
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+                <a href="{{url('/posts/create')}}" class="nav-link">Create Post</a>
+            </li>
+        </ul>
+
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
