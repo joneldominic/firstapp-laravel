@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Post;
+use DB; //Adding Database library for mysql approach query
+
 class PostsController extends Controller
 {
     /**
@@ -13,7 +16,17 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        // Using Eloquent (Object Relational Mapper)
+        // return Post::all(); //Just For Display
+
+        // $posts = Post::all(); // Fetch all data
+        // $posts = Post::orderBy('title', 'asc')->get(); // Fetch all data in ascending order
+        // $posts = Post::where('title', 'Post Two')->get(); // anoher way of fetching data via WHERE clause
+        // $posts = DB::select('select * from posts'); // Using MySql Query
+        // $posts = Post::orderBy('title', 'desc')->take(1)->get(); // Fetch data with limit
+        $posts = Post::orderBy('title', 'desc')->paginate(10); // Fetch data and create pagination
+
+        return view('posts.index')->with('posts', $posts);
     }
 
     /**
@@ -45,7 +58,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.show')->with('post', $post);
     }
 
     /**

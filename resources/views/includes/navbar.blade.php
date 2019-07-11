@@ -15,6 +15,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/services')}}">Services</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/posts')}}">Blog</a>
+            </li>
         </ul>
           
         <form class="form-inline my-2 my-lg-0">
