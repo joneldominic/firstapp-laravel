@@ -22,7 +22,7 @@ Route::resource('posts', 'PostsController');
 // Generated from auth
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index');
 
 
 /*

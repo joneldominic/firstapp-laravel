@@ -15,5 +15,8 @@ class Post extends Model
     // Timestamps (True - to be updated | False - ...)
     public $timestamps = true;
 
-
+    // Creating Relations - Post has a relationship with User and belongs to a user
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

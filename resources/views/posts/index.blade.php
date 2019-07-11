@@ -23,7 +23,7 @@
         <div class="card">
             <div class="card-block">
                     <h3 class="card-title"><a href="{{url('/posts').'/'.$post->id}}">{{$post->title}}</a></h3>
-                    <small class="card-text">Written on {{$post->created_at}}</small>
+                    <small class="card-text">Written on {{$post->created_at}} by {{$post->user->name}}</small>
             </div>
         </div>    
     @empty
